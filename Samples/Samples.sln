@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Decorator", "Samples.Decorator\Samples.Decorator.csproj", "{B9DA8F33-68ED-4EED-8DDA-562ACC07E89F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Ui", "Samples.Ui\Samples.Ui.csproj", "{565E6723-C382-45CE-8EB8-34871EC5E833}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9DA8F33-68ED-4EED-8DDA-562ACC07E89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9DA8F33-68ED-4EED-8DDA-562ACC07E89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9DA8F33-68ED-4EED-8DDA-562ACC07E89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9DA8F33-68ED-4EED-8DDA-562ACC07E89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565E6723-C382-45CE-8EB8-34871EC5E833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565E6723-C382-45CE-8EB8-34871EC5E833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565E6723-C382-45CE-8EB8-34871EC5E833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565E6723-C382-45CE-8EB8-34871EC5E833}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
