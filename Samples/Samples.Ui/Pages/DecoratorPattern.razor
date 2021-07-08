@@ -1,0 +1,59 @@
+﻿@page "/DecoratorPattern"
+@using Samples.Shared.Interfaces
+@using Samples.Shared.Models
+<h4>Decorator Pattern</h4>
+
+<form class="form-inline">
+  
+    <div class="custom-control my-1 mr-sm-2">
+        <label>Click on the button to fetch Users from API</label>
+    </div>
+
+    <button class="btn btn-primary my-1" @onclick=@FetchUsersAsync>Fetch</button>
+</form>
+
+@if (_listOfUsers.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in _listOfUsers)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Username</td>
+                <td>@item.Email</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject]
+    private IUserRepository UserRepository { get; set; }
+
+    private IEnumerable<User> _listOfUsers = new List<User>();
+
+
+    private async Task FetchUsersAsync()
+    {
+        try
+        {   
+            _listOfUsers = await UserRepository.GetUsers();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+
+        }
+    }
+}

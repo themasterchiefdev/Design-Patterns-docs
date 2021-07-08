@@ -3,9 +3,10 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace Samples.Shared.Models
 {
+    
     public partial class User
     {
-        [JsonPropertyName("Id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
         [JsonPropertyName("name")]
