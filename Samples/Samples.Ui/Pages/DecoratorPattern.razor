@@ -3,15 +3,13 @@
 @using Samples.Shared.Models
 <h4>Decorator Pattern</h4>
 
-<form class="form-inline">
-  
+
+<div class="form-inline m-3" >
     <div class="custom-control my-1 mr-sm-2">
         <label>Click on the button to fetch Users from API</label>
     </div>
-
-    <button class="btn btn-primary my-1" @onclick=@FetchUsersAsync>Fetch</button>
-</form>
-
+    <button class="btn btn-primary my-1" type="submit" @onclick="FetchUsersAsync">Fetch</button>
+</div>
 @if (_listOfUsers.Any())
 {
     <table class="table">
@@ -35,6 +33,10 @@
         }
         </tbody>
     </table>
+}
+else
+{
+    <div class="row">Loading..</div>
 }
 
 @code {
