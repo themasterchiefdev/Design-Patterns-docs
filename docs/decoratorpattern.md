@@ -39,7 +39,7 @@ For implementing the decorator pattern,
 
 With this approach, we can easily substitute the original implementation with another implementation at run-time. So, this wrapper becomes a decorator as the wrapper class implements the same interface as the original class. That’s why from the calling code's perspective these classes are identical. Make the wrapper’s reference field accept any object that follows that interface.
 
-[Example implementation can be found here:](https://github.com/yvrkarthik/DesignPatterns/tree/main/DesignPatterns.Decorator)
+[Example implementation can be found here:](https://github.com/yvrkarthik/Design-Patterns-docs/tree/main/Samples/Samples.Decorator)
 
 __External References for further reading__
 
