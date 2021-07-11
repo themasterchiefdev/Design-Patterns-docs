@@ -1,61 +1,96 @@
-﻿@page "/DecoratorPattern"
+﻿@page "/decoratorpatterndemo"
 @using Samples.Shared.Interfaces
 @using Samples.Shared.Models
-<h4>Decorator Pattern</h4>
+@using System.Timers
+<strong><h4>Decorator Pattern Demo</h4></strong>
 
-
-<div class="form-inline m-3" >
-    <div class="custom-control my-1 mr-sm-2">
-        <label>Click on the button to fetch Users from API</label>
+    <div class="form-inline">
+        <label>To start the demo,open the browser console then goto the&nbsp;<strong>NETWORK</strong>&nbsp; tab and click the&nbsp; <strong>Fetch Users</strong>&nbsp; button &nbsp;</label>
+        <button class="btn btn-primary my-1" type="submit" @onclick="FetchUsersAsync" disabled="@_disableButton">@_updateFetchButtonText</button>
     </div>
-    <button class="btn btn-primary my-1" type="submit" @onclick="FetchUsersAsync">Fetch</button>
-</div>
-@if (_listOfUsers.Any())
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>UserName</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in _listOfUsers)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Username</td>
-                <td>@item.Email</td>
-            </tr>
-        }
-        </tbody>
-    </table>
-}
-else
-{
-    <div class="row">Loading..</div>
-}
-
-@code {
-    [Inject]
-    private IUserRepository UserRepository { get; set; }
-
-    private IEnumerable<User> _listOfUsers = new List<User>();
 
 
-    private async Task FetchUsersAsync()
+    @if (_listOfUsers.Any())
     {
-        try
-        {   
-            _listOfUsers = await UserRepository.GetUsers();
-        }
-        catch (Exception e)
+        <div class="pt-3" style="visibility: @_showObservability">
+            <p><strong>Observe the following</strong> </p>
+            <ul>
+                <li class="list-group-item">The first call will be made to the external api. </li>
+                <li class="list-group-item">When you click on the <strong>Fetch Users</strong> button again, notice there is no api call to the external service. This data is being fetched from the browser cache.</li>
+                <li class="list-group-item">The data is cached in the memory for 30 seconds.After 30 seconds, we would be able to call the external api.</li>
+            </ul>
+        </div>
+
+        <table class="table pt-2">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in _listOfUsers)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Username</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            <tr></tr>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="text-center pt-3" style="display: block;visibility: @_showObservability">
+            <p>Don't worry - a few bits tried to escape, but we caught them</p>
+            <img src="assets/1479.gif" alt="Loading...">
+        </div>
+    }
+
+    @code {
+        [Inject]
+        private IUserRepository UserRepository { get; set; }
+        private IEnumerable<User> _listOfUsers = new List<User>();
+        private string _showObservability = "hidden";
+        private string _updateFetchButtonText = "Fetch Users";
+        private bool _disableButton = false;
+
+
+        private async Task FetchUsersAsync()
         {
-            Console.WriteLine(e);
+            try
+            {
+                _showObservability = "visible";
+                _updateFetchButtonText = "Fetching Users from the API...";
+                _disableButton = true;
+                _listOfUsers = await UserRepository.GetUsers();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+            finally
+            {
+                _disableButton = false;
+                _updateFetchButtonText = "Fetch Users";
+            }
+
 
         }
+        
+        protected override Task OnInitializedAsync()
+        {
+            _showObservability = "hidden";
+            _updateFetchButtonText = "Fetch Users";
+            _disableButton = false;
+            return base.OnInitializedAsync();
+        }
+
     }
-}

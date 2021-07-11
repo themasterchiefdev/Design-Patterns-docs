@@ -2,13 +2,20 @@
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu/>
+        <NavMenu />
+       
     </div>
 
     <div class="main">
         <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+            <a class="text-decoration-none" style="color: #0d2192" target="_blank" href="https://design.readmeon.cloud/designpatterns/decorator">
+                Blog
+            </a>
+            <SocialIconComponent Href="https://github.com/yvrkarthik/Design-Patterns-docs" CssStyles="color: #0d2192;font-size: 1.5rem;" HrefTarget="_blank" SocialIcon="fab fa-github"></SocialIconComponent>
+            <SocialIconComponent Href="https://www.linkedin.com/in/rajivkarthikyanamandra/" CssStyles="color: #0d2192;font-size: 1.5rem;" HrefTarget="_blank" SocialIcon="fab fa-linkedin"></SocialIconComponent>
+
         </div>
+
 
         <div class="content px-4">
             @Body

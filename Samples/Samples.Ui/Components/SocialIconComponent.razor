@@ -1,0 +1,21 @@
+﻿<a class="@CssClasses" href="@Href" target="@HrefTarget">
+    <i class="@SocialIcon" style="@CssStyles" aria-hidden="true"></i>
+</a>
+
+@code {
+    [Parameter]
+    public string SocialIcon { get; set; }
+
+    [Parameter]
+    public string Href { get; set; }
+
+    [Parameter]
+    public string HrefTarget { get; set; }
+
+    [Parameter]
+    public string CssStyles { get; set; }
+
+
+    [Parameter]
+    public string CssClasses { get; set; } = string.Empty;
+}

@@ -8,18 +8,23 @@
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="favicon.svg" rel="icon" type="image/x-icon" />
     <link href="Samples.Ui.styles.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app"><div class="container text-center mt-5" style="color:#320b86;">
+        <p>Please wait while the minions do their work...</p>
+        <img src="assets/Coffee cup.gif" alt="Loading...." />
+    </div></div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
+<script src="_framework/blazor.webassembly.js"></script>
+<script src="https://kit.fontawesome.com/9f49c24bed.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
